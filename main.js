@@ -5,7 +5,26 @@ class Simulation {
     }
 
     simulate(...input) {
-        //
+        input.forEach(option => {
+            switch (option) {
+                case 0:
+                    break;
+                case 1:
+                    //
+                    break;
+                case 2:
+                    // 
+                    break;
+                case 3:
+                    // 
+                    break;
+                case 4:
+                    // 
+                    break;
+                default:
+                    // 
+                    console.log('Oh no, they tried to use an option I do not support...');
+            }
     }
 }
 
