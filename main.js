@@ -16,7 +16,7 @@ class Simulation {
                     this.piece.move(Piece.BACKWARDS);
                     break;
                 case 3:
-                    // 
+                    this.piece.rotate();
                     break;
                 case 4:
                     // 
@@ -32,6 +32,8 @@ class Simulation {
 class Piece {
     static FORWARD = 1;
     static BACKWARDS = -1;
+    static CLOCKWISE = 1;
+    static COUNTERCLOCKWISE = -1;
 
     NORTH = 0;
     EAST = 1;
@@ -60,6 +62,20 @@ class Piece {
     setPosition(x, y) {
         this.x = x; 
         this.y = y;
+    }
+
+    rotate(rotation = Piece.CLOCKWISE) {
+        const edges = {
+            [Piece.CLOCKWISE]: 0,
+            [Piece.CCW]: this.directions.length - 1
+        };
+
+        const newDirection = this.direction + rotation;
+
+        const passedEdge = newDirection < edges[Piece.CLOCKWISE]
+            || newDirection > edges[Piece.COUNTERCLOCKWISE];
+
+        this.direction = passedEdge ? edges[rotation] : newDirection;
     }
 }
 
