@@ -23,7 +23,6 @@ class Simulation {
                     this.piece.rotate(Piece.COUNTERCLOCKWISE);
                     break;
                 default:
-                    // 
                     console.log('Oh no, they tried to use an option I do not support...');
             }
         });
@@ -110,12 +109,3 @@ class Board {
         this.height = height;
     }
 }
-
-const width = 4;
-const height = 4;
-const x = 2;
-const y = 2;
-
-const board = new Simulation(width, height, x, y);
-const result = board.simulate(2, 2, 0);
-console.log(`Successful simulation:`, result, JSON.stringify(result) == JSON.stringify([-1, -1]));
