@@ -19,7 +19,7 @@ class Simulation {
                     this.piece.rotate();
                     break;
                 case 4:
-                    // 
+                    this.piece.rotate(Piece.COUNTERCLOCKWISE);
                     break;
                 default:
                     // 
@@ -67,7 +67,7 @@ class Piece {
     rotate(rotation = Piece.CLOCKWISE) {
         const edges = {
             [Piece.CLOCKWISE]: 0,
-            [Piece.CCW]: this.directions.length - 1
+            [Piece.COUNTERCLOCKWISE]: this.directions.length - 1
         };
 
         const newDirection = this.direction + rotation;
