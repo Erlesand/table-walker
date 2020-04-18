@@ -22,3 +22,12 @@ class Board {
         this.height = height; 
     }
 }
+
+const width = 4; 
+const height = 4; 
+const x = 2; 
+const y = 2; 
+
+const board = new Simulation(width, height, x, y); 
+const result = board.simulate(1, 4, 1, 3, 2, 3, 2, 4, 1, 0);
+console.log(`Successful simulation:`, JSON.stringify(result) == JSON.stringify([0, 1]));
