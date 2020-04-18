@@ -2,6 +2,7 @@ class Simulation {
     constructor(width, height, x, y) {
         this.board = new Board(width, height);
         this.piece = new Piece(x, y);
+        this.piece.addToBoard(this.board);
     }
 
     simulate(...input) {
@@ -48,11 +49,20 @@ class Piece {
         this.x = x;
         this.y = y;
         this.direction = this.NORTH;
+        this.outOfBounds = false;
+    }
+
+    addToBoard(board) {
+        this.board = board;
     }
 
     move(movement = Piece.FORWARD) {
-        const x = this.x + movement * this.facing()[0];
-        const y = this.y + movement * this.facing()[1];
+        let x = this.x + movement * this.facing()[0];
+        let y = this.y + movement * this.facing()[1];
+
+        if (!this.isValidMove(x, y)) {
+            this.outOfBounds = true;
+        }
 
         this.setPosition(x, y);
     }
@@ -61,8 +71,17 @@ class Piece {
         return this.directions[this.direction];
     }
 
+    isValidMove(x, y) {
+        const valid = (x >= 0 && x < this.board.width)
+            && (y >= 0 && y < this.board.height);
+
+        return valid;
+    }
+
     getPosition() {
-        return [this.x, this.y];
+        return this.outOfBounds
+            ? [-1, -1]
+            : [this.x, this.y];
     }
 
     setPosition(x, y) {
