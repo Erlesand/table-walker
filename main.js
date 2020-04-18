@@ -13,7 +13,7 @@ class Simulation {
                     this.piece.move();
                     break;
                 case 2:
-                    // 
+                    this.piece.move(Piece.BACKWARDS);
                     break;
                 case 3:
                     // 
@@ -30,8 +30,8 @@ class Simulation {
 }
 
 class Piece {
-    FORWARD = 1;
-    BACKWARDS = -1;
+    static FORWARD = 1;
+    static BACKWARDS = -1;
 
     NORTH = 0;
     EAST = 1;
@@ -46,7 +46,7 @@ class Piece {
         this.direction = this.NORTH;
     }
 
-    move(movement = this.FORWARD) {
+    move(movement = Piece.FORWARD) {
         const x = this.x + movement * this.facing()[0];
         const y = this.y + movement * this.facing()[1];
 
