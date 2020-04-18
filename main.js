@@ -27,7 +27,7 @@ class Simulation {
             }
         });
 
-        return this.piece.getPosition(); 
+        return this.piece.getPosition();
     }
 }
 
@@ -45,8 +45,8 @@ class Piece {
     directions = [[0, -1], [1, 0], [0, 1], [-1, 0]];
 
     constructor(x, y) {
-        this.x = x; 
-        this.y = y; 
+        this.x = x;
+        this.y = y;
         this.direction = this.NORTH;
     }
 
@@ -66,7 +66,7 @@ class Piece {
     }
 
     setPosition(x, y) {
-        this.x = x; 
+        this.x = x;
         this.y = y;
     }
 
@@ -87,15 +87,15 @@ class Piece {
 
 class Board {
     constructor(width, height) {
-        this.width = width; 
-        this.height = height; 
+        this.width = width;
+        this.height = height;
     }
 }
 
-const width = 4; 
-const height = 4; 
-const x = 2; 
-const y = 2; 
+const width = 4;
+const height = 4;
+const x = 2;
+const y = 2;
 
 const board = new Simulation(width, height, x, y);
 const result = board.simulate(2, 2, 0);
