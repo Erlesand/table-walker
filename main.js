@@ -25,7 +25,9 @@ class Simulation {
                     // 
                     console.log('Oh no, they tried to use an option I do not support...');
             }
-        })
+        });
+
+        return this.piece.getPosition(); 
     }
 }
 
@@ -57,6 +59,10 @@ class Piece {
 
     facing() {
         return this.directions[this.direction];
+    }
+
+    getPosition() {
+        return [this.x, this.y];
     }
 
     setPosition(x, y) {
