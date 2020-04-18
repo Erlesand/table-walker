@@ -10,7 +10,7 @@ class Simulation {
                 case 0:
                     break;
                 case 1:
-                    //
+                    this.piece.move();
                     break;
                 case 2:
                     // 
@@ -25,13 +25,41 @@ class Simulation {
                     // 
                     console.log('Oh no, they tried to use an option I do not support...');
             }
+        })
     }
 }
 
 class Piece {
+    FORWARD = 1;
+    BACKWARDS = -1;
+
+    NORTH = 0;
+    EAST = 1;
+    SOUTH = 2;
+    WEST = 3;
+
+    directions = [[0, -1], [1, 0], [0, 1], [-1, 0]];
+
     constructor(x, y) {
         this.x = x; 
         this.y = y; 
+        this.direction = this.NORTH;
+    }
+
+    move(movement = this.FORWARD) {
+        const x = this.x + movement * this.facing()[0];
+        const y = this.y + movement * this.facing()[1];
+
+        this.setPosition(x, y);
+    }
+
+    facing() {
+        return this.directions[this.direction];
+    }
+
+    setPosition(x, y) {
+        this.x = x; 
+        this.y = y;
     }
 }
 
